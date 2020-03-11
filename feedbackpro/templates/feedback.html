@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Fform</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-3 col-md-6">
+                {% if fdata %}
+            <h2>Your Feedbacks aree..!!</h2>
+        {% endif %}
+    {% if fdata %}
+        {% for i in fdata %}
+            Name:{{ i.name }}<br>
+            Rating:{{ i.rating }}<br>
+            Date:{{ i.date }}<br>
+            Feedback:{{ i.feedback }}<br>
+        {% endfor %}
+    {% else %}
+        <h2>Feedbacks Are Not Available...!!!</h2>
+    {% endif %}
+        <h2>Please Enter Your Feedbacks here...!!</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ fform.as_p }}<br>
+            <input type="submit" class="btn btn-success">
+        </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
